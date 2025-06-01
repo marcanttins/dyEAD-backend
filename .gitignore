@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+pip‐wheel‐metadata/
+*.egg‐info/
+z_*.*
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+*.logger
+
+
+# Build
+build/
+dist/
