@@ -12,6 +12,13 @@ class UserRequestSchema(Schema):
         required=True,
         error_messages={'required': 'email é obrigatório', 'invalid': 'email inválido'}
     )
+    password = fields.Str(
+#        load_only=True,                    # usado apenas para ler no request
+#        required=False,                    # talvez não seja obrigatório em edição
+#        validate=validate.Length(min=6),    # mínimo de 6 caracteres, por exemplo
+        required=True,
+        error_messages={'required': 'password é obrigatório'}
+    )
     role = fields.Str(
         validate=validate.OneOf(['aluno', 'instrutor', 'admin']),
         load_default='aluno',
