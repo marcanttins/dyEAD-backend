@@ -1,0 +1,91 @@
+2025-06-11 04:32:13 ERROR [interfaces.http.app] user_controller.py:64 - Traceback completo: Traceback (most recent call last):
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\pg8000\legacy.py", line 254, in execute
+    self._context = self._c.execute_unnamed(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\pg8000\core.py", line 715, in execute_unnamed
+    self.handle_messages(context)
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\pg8000\core.py", line 835, in handle_messages
+    raise context.error
+pg8000.exceptions.DatabaseError: {'S': 'ERRO', 'V': 'ERROR', 'C': '22001', 'M': 'valor é muito longo para tipo character varying(128)', 'F': 'varchar.c', 'L': '640', 'R': 'varchar'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\pg8000\legacy.py", line 281, in execute
+    raise cls(msg)
+pg8000.dbapi.ProgrammingError: {'S': 'ERRO', 'V': 'ERROR', 'C': '22001', 'M': 'valor é muito longo para tipo character varying(128)', 'F': 'varchar.c', 'L': '640', 'R': 'varchar'}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\dyEAD-backend\interfaces\http\controllers\user_controller.py", line 50, in create_user
+    user = repo.create(
+           ^^^^^^^^^^^^
+  File "D:\dyEAD-backend\infrastructure\repositories\user_repository_impl.py", line 41, in create
+    db.session.commit()
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 599, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4345, in flush
+    self._flush(objects)
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4480, in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4441, in _flush
+    flush_context.execute()
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+  File "D:\dyEAD-backend\.venv\Lib\site-packages\pg8000\legacy.py", line 281, in execute
+    raise cls(msg)
+sqlalchemy.exc.ProgrammingError: (pg8000.dbapi.ProgrammingError) {'S': 'ERRO', 'V': 'ERROR', 'C': '22001', 'M': 'valor é muito longo para tipo character varying(128)', 'F': 'varchar.c', 'L': '640', 'R': 'varchar'}
+[SQL: INSERT INTO users (name, email, password_hash, role, created_at, updated_at) VALUES (%s::VARCHAR, %s::VARCHAR, %s::VARCHAR, %s, %s::TIMESTAMP WITH TIME ZONE, %s::TIMESTAMP WITH TIME ZONE) RETURNING users.id]
+[parameters: ('Carlos', 'carlos@gmail.com', 'scrypt:32768:8:1$VON4wU7H1t8lFczS$9411a879a9968a52177cb800da532628a6b7d5af6c8099369491bf23c7a6e961762f89caca73c8be480834e134a20e4654abaad4cb8671d7487ec9f429355870', 'aluno', datetime.datetime(2025, 6, 11, 7, 32, 13, 26735, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 6, 11, 7, 32, 13, 26735, tzinfo=datetime.timezone.utc))]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
