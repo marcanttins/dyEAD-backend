@@ -1,54 +1,22 @@
-# .gitignore
-#Python
+# Python
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-develop-eggs/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+*.sqlite3
+.venv/
 pip‐wheel‐metadata/
 *.egg‐info/
+z_*.*
 
-# Database
-*.sqlite
-*.sqlite3
-instance/
-
-# IDE / OS
+# Editor / OS
 .vscode/
 .idea/
 .DS_Store
-*.swp
-*.swo
 
 # Logs
 *.log
 *.logger
 
+
 # Build
 build/
 dist/
-
-# Alembic
-migrations/versions/
-
-#Outros
-z_*.*
